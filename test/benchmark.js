@@ -1,7 +1,8 @@
 const path = require('path')
 const Benchmark = require('benchmark')
 const bentleyOttmann = require('../dist/bentleyOttmann.js')
-const simplePolygon = require('simplepolygon')
+const gpsi = require('geojson-polygon-self-intersections')
+const isects = require('2d-polygon-self-intersections')
 const loadJsonFile = require('load-json-file')
 
 const regression = loadJsonFile.sync(path.join(__dirname, 'fixtures', 'notSimple', 'regression1.geojson'))
@@ -16,29 +17,33 @@ const options = {
     }
 }
 
-
 // Switzerland
-// simplePolygon x 22.21 ops/sec ±2.53% (41 runs sampled)
-// bentleyOttmann x 2,148 ops/sec ±1.21% (90 runs sampled)
+// gpsi x 36.78 ops/sec ±2.03% (49 runs sampled)
+// bentleyOttmann x 2,333 ops/sec ±1.79% (89 runs sampled)
+// isects x 12.70 ops/sec ±1.37% (36 runs sampled
 // - Fastest is bentleyOttmann
 const suite = new Benchmark.Suite('Switzerland', options)
 suite
-    .add('simplePolygon', function () {
-        simplePolygon(switzerland)
+    .add('gpsi', function () {
+        gpsi(switzerland)
     })
     .add('bentleyOttmann', function () {
         bentleyOttmann(switzerland)
     })
+    .add('isects', function () {
+        isects(switzerland.geometry.coordinates[0])
+    })
     .run()
 
+
 // Simple Case
-// simplePolygon x 40,095 ops/sec ±2.69% (86 runs sampled)
-// bentleyOttmann x 282,728 ops/sec ±1.84% (90 runs sampled)
+// gpsi x 246,005 ops/sec ±1.54% (90 runs sampled)
+// bentleyOttmann x 464,363 ops/sec ±1.73% (95 runs sampled)
 // - Fastest is bentleyOttmann
 const suite2 = new Benchmark.Suite('Simple Case', options)
 suite2
-    .add('simplePolygon', function () {
-        simplePolygon(regression)
+    .add('gpsi', function () {
+        gpsi(regression)
     })
     .add('bentleyOttmann', function () {
         bentleyOttmann(regression)
