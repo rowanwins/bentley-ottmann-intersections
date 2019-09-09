@@ -54,7 +54,7 @@ test('Sweepline can add an endpoint', function (t) {
     t.is(midLine.segmentAbove, null)
     t.is(midLine.segmentBelow, null)
 
-    const e3 = new Event(new Point([0, 1]))
+    const e3 = new Event(new Point([-1, 1]))
     const e4 = new Event(new Point([1, 1]))
 
     e3.otherEvent = e4
@@ -63,13 +63,12 @@ test('Sweepline can add an endpoint', function (t) {
     e4.isLeftEndpoint = false;
 
     const topLine = sl.addSegment(e3)
-
     t.is(midLine.segmentAbove, topLine)
     t.is(midLine.segmentBelow, null)
     t.is(topLine.segmentAbove, null)
     t.is(topLine.segmentBelow, midLine)
 
-    const e5 = new Event(new Point([0, -1]))
+    const e5 = new Event(new Point([-1, -1]))
     const e6 = new Event(new Point([2, -1]))
 
     e5.otherEvent = e6
@@ -168,7 +167,7 @@ test('Sweepline is correctly sorted', function (t) {
     t.is(midLine.segmentAbove, null)
     t.is(midLine.segmentBelow, null)
 
-    const e3 = new Event(new Point([-1, 0]))
+    const e3 = new Event(new Point([-1, 0.1]))
     const e4 = new Event(new Point([0.5, 1]))
 
     e3.otherEvent = e4
@@ -183,7 +182,7 @@ test('Sweepline is correctly sorted', function (t) {
     t.is(topLine.segmentAbove, null)
     t.is(topLine.segmentBelow, midLine)
 
-    const e5 = new Event(new Point([-1, 0]))
+    const e5 = new Event(new Point([-1, -0.1]))
     const e6 = new Event(new Point([0.5, -1]))
 
     e5.otherEvent = e6
@@ -224,8 +223,8 @@ test('Sweepline is correctly sorted again', function (t) {
     t.is(midLine.segmentAbove, null)
     t.is(midLine.segmentBelow, null)
 
-    const e3 = new Event(new Point([-1.5, 1]))
-    const e4 = new Event(new Point([0, 0]))
+    const e3 = new Event(new Point([-1, 1]))
+    const e4 = new Event(new Point([0, 0.1]))
 
     e3.otherEvent = e4
     e4.otherEvent = e3
@@ -239,8 +238,8 @@ test('Sweepline is correctly sorted again', function (t) {
     t.is(topLine.segmentAbove, null)
     t.is(topLine.segmentBelow, midLine)
 
-    const e5 = new Event(new Point([-1.5, -1]))
-    const e6 = new Event(new Point([0, 0]))
+    const e5 = new Event(new Point([-1, -1]))
+    const e6 = new Event(new Point([0, -0.1]))
 
     e5.otherEvent = e6
     e6.otherEvent = e5

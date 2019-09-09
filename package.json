@@ -25,6 +25,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "robust-predicates": "^2.0.3",
     "splaytree": "^2.0.3",
     "tinyqueue": "^2.0.0"
   },

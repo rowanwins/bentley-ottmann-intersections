@@ -19,8 +19,8 @@ const options = {
 
 // Switzerland
 // gpsi x 36.78 ops/sec ±2.03% (49 runs sampled)
-// bentleyOttmann x 2,333 ops/sec ±1.79% (89 runs sampled)
-// isects x 12.70 ops/sec ±1.37% (36 runs sampled
+// bentleyOttmann x 2,047 ops/sec ±1.79% (89 runs sampled)
+// isects x 14.22 ops/sec ±1.73% (40 runs sampled)
 // - Fastest is bentleyOttmann
 const suite = new Benchmark.Suite('Switzerland', options)
 suite
@@ -38,7 +38,7 @@ suite
 
 // Simple Case
 // gpsi x 246,005 ops/sec ±1.54% (90 runs sampled)
-// bentleyOttmann x 464,363 ops/sec ±1.73% (95 runs sampled)
+// bentleyOttmann x 535,293 ops/sec ±1.73% (95 runs sampled)
 // - Fastest is bentleyOttmann
 const suite2 = new Benchmark.Suite('Simple Case', options)
 suite2

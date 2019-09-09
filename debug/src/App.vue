@@ -20,9 +20,9 @@ L.Icon.Default.mergeOptions({
     shadowUrl: markerShadow
 })
 
-//const trouble = require('../../test/fixtures/notSimple/switzerlandKinked.geojson')
-// const trouble = require('../../test/fixtures/notSimple/regression1.geojson')
-const trouble = require('../../test/fixtures/notSimple/doubleIntersection.geojson')
+// const trouble = require('../../test/fixtures/notSimple/switzerlandKinked.geojson')
+const trouble = require('../../test/fixtures/notSimple/superbad.geojson')
+// const trouble = require('../../test/fixtures/notSimple/example.geojson')
 
 export default {
     name: 'App',
@@ -41,7 +41,7 @@ export default {
         const ips = bentleyOttmann(trouble)
         const ipGroup = L.layerGroup([]).addTo(map)
 
-
+        console.log(ips.length)
         ips.forEach(function (ip) {
             L.circleMarker([ip.p.y, ip.p.x]).addTo(ipGroup)
         })
@@ -57,5 +57,9 @@ export default {
   height: 100%;
   width: 100%;
   margin: 0px;
+ }
+
+ .leaflet-tooltip {
+    white-space: pre-wrap;
  }
 </style>

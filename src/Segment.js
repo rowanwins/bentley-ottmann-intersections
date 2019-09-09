@@ -1,4 +1,4 @@
-import { debugSegPriorToSplit, debugShowLineDirectionPriorSplit, debugNewLeftRight, debugShowLineDirectionAfterSplit } from './debug'
+// import { debugSegPriorToSplit, debugShowLineDirectionPriorSplit, debugNewLeftRight, debugShowLineDirectionAfterSplit } from './debug'
 
 export default class Segment {
 
