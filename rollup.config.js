@@ -15,14 +15,14 @@ const output = (file, plugins) => ({
 })
 
 export default [
-    output('./dist/bentleyOttmann.js', [
+    output('./dist/bentleyOttmannIntersections.js', [
         strip({
             functions: ['debugEventAndSegment', 'debugEventAndSegments', 'debugIntersectionEventAndSegments']
         }),
         commonjs(),
         resolve()
     ]),
-    output('./dist/bentleyOttmann.min.js', [
+    output('./dist/bentleyOttmannIntersections.min.js', [
         strip({
             functions: ['debugEventAndSegment', 'debugEventAndSegments', 'debugIntersectionEventAndSegments']
         }),

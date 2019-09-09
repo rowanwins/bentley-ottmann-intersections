@@ -44,30 +44,11 @@ export default class SweepLine {
         this.tree.remove(seg)
     }
 
-    // flipSegments (seg1, seg2, e) {
-    //     this.removeSegmentFromSweepline(seg1)
-    //     this.removeSegmentFromSweepline(seg2)
-
-    //     if (!seg1.hasBeenSwapped) {
-    //         console.log("going this")
-    //         seg2 = this.addSegment(seg2.rightSweepEvent)
-    //         seg1 = this.addSegment(seg1.rightSweepEvent)
-    //         seg1.hasBeenSwapped = true
-    //         seg2.hasBeenSwapped = true
-    //     } else {
-    //         console.log("re swapping this")
-    //         seg1 = this.addSegment(seg2.leftSweepEvent)
-    //         seg2 = this.addSegment(seg1.leftSweepEvent)
-    //     }
-    //     return [seg1, seg2]
-    // }
-
     flipSegments (seg1, seg2) {
         const node1 = this.tree.find(seg1)
         const node2 = this.tree.find(seg2)
 
         if (node1 === null || node2 === null) {
-            // console.log("having trouble finding", node1, node2, seg1, seg2)
             return
         }
         const tempAbove1 = seg1.segmentAbove
@@ -77,7 +58,6 @@ export default class SweepLine {
         const tempBelow2 = seg2.segmentBelow
 
         if (seg2.segmentAbove === seg1) {
-            // console.log("this way")
             seg1.segmentAbove = seg2
             seg2.segmentAbove = tempAbove1
             seg1.segmentBelow = tempBelow2
@@ -85,7 +65,6 @@ export default class SweepLine {
             if (tempAbove1 !== null) tempAbove1.segmentBelow = seg2
             if (tempBelow2 !== null) tempBelow2.segmentAbove = seg1
         } else {
-            // console.log("that way")
             seg1.segmentAbove = tempAbove2
             seg2.segmentAbove = seg1
             seg1.segmentBelow = seg2
@@ -98,46 +77,7 @@ export default class SweepLine {
 
         node2.key = tmp1
         node1.key = tmp2
-        // return [node1.data, node2.data]
     }
-
-    // flipSegments (seg1, seg2, e) {
-    //     console.log('swapsies')
-    //     let node1 = this.tree.find(seg1)
-    //     let node2 = this.tree.find(seg2)
-    //     if (node1 === null || node2 === null) {
-    //         console.log("having trouble finding", node1, node2, seg1)
-    //         node1 = {key: seg1}
-    //         // return
-    //     }
-    //     const tempAbove1 = seg1.segmentAbove
-    //     const tempAbove2 = seg2.segmentAbove
-
-    //     const tempBelow1 = seg1.segmentBelow
-    //     const tempBelow2 = seg2.segmentBelow
-
-    //     if (seg2.segmentAbove === seg1) {
-    //         console.log("going this way")
-
-    //         seg1.segmentAbove = seg2
-    //         seg2.segmentAbove = tempAbove1
-    //         seg1.segmentBelow = tempBelow2
-    //         seg2.segmentBelow = seg1
-    //         if (tempAbove1 !== null) tempAbove1.segmentBelow = seg2
-    //         if (tempBelow2 !== null) tempBelow2.segmentAbove = seg1
-    //     } else {
-    //         console.log("going anbother")
-    //     // if (seg1.segmentAbove === seg2)
-    //         seg1.segmentAbove = tempAbove2
-    //         seg2.segmentAbove = seg1
-    //         seg1.segmentBelow = seg2
-    //         seg2.segmentBelow = tempBelow1
-    //     }
-
-    //     const temp = seg2
-    //     seg2 = seg1
-    //     seg1 = temp
-    // }
 
     testIntersect (seg1, seg2) {
         if (seg1 === null || seg2 === null) return false
@@ -175,32 +115,20 @@ export default class SweepLine {
 
             const p = new Point([x, y])
             const intersectionEvent = new Event(p)
-            // intersectionEvent.segment1 = seg1
-            // intersectionEvent.segment2 = seg2
-
-            // if (seg1.leftSweepEvent.p.y > seg2.leftSweepEvent.p.y) {
-            //     intersectionEvent.segment1 = seg1
-            //     intersectionEvent.segment2 = seg2
-            // } else {
-            //     intersectionEvent.segment1 = seg2
-            //     intersectionEvent.segment2 = seg1
-            // }
 
             if (seg2.segmentAbove === seg1) {
-                // debugTwoSegments(seg1, seg2)
                 intersectionEvent.segment1 = seg1
                 intersectionEvent.segment2 = seg2
             } else if (seg1.segmentAbove === seg2) {
-                // debugTwoSegments(seg1, seg2)
                 intersectionEvent.segment1 = seg2
                 intersectionEvent.segment2 = seg1
             }
 
             const comp = compareSegments(seg1, seg2)
-            if (comp === 1) {
+            if (comp > 0) {
                 intersectionEvent.segment1 = seg1
                 intersectionEvent.segment2 = seg2
-            } else if (comp === -1) {
+            } else {
                 intersectionEvent.segment1 = seg2
                 intersectionEvent.segment2 = seg1
             }

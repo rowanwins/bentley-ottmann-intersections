@@ -24,7 +24,7 @@ test('complex fixtures', (t) => {
         const name = path.parse(filepath).name;
         const geojson = load.sync(filepath);
         const ips = bentleyOttmann(geojson);
-        t.true(ips.length > 0,  `[complex] ${name}`);
+        t.true(ips.length === geojson.properties.expectedIntersections,  `[complex] ${name}`);
     });
 })
 

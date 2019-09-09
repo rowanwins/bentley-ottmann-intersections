@@ -1,6 +1,8 @@
 {
   "type": "Feature",
-  "properties": {},
+  "properties": {
+    "expectedIntersections": 2
+  },
   "geometry": {
     "type": "Polygon",
     "coordinates": [

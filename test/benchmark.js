@@ -1,6 +1,6 @@
 const path = require('path')
 const Benchmark = require('benchmark')
-const bentleyOttmann = require('../dist/bentleyOttmann.js')
+const bentleyOttmann = require('../dist/bentleyOttmannIntersections.js')
 const gpsi = require('geojson-polygon-self-intersections')
 const isects = require('2d-polygon-self-intersections')
 const loadJsonFile = require('load-json-file')

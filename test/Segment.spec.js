@@ -2,8 +2,6 @@ import test from 'ava';
 import Event from '../src/Event'
 import Segment from '../src/Segment'
 import Point from '../src/Point'
-import Sweepline from '../src/Sweepline'
-import EventQueue from '../src/EventQueue'
 
 test('Segment has correct properties', function (t) {
 

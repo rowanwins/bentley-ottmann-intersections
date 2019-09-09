@@ -2,17 +2,19 @@
   "name": "bentley-ottmann-intersections",
   "version": "0.0.1",
   "description": "A module to check if a polygon self-intersects using the bentley-ottmann algorithm",
-  "main": "dist/bentleyOttmann.js",
+  "main": "dist/bentleyOttmannIntersections.js",
   "module": "src/main.js",
-  "unpkg": "dist/bentleyOttmann.min.js",
-  "jsdelivr": "dist/bentleyOttmann.min.js",
+  "unpkg": "dist/bentleyOttmannIntersections.min.js",
+  "jsdelivr": "dist/bentleyOttmannIntersections.min.js",
   "scripts": {
     "bench": "npm run build && node test/benchmark.js",
     "build": "rollup -c",
+    "build:debug": "cross-env webpack --config debug/webpack.config.js --mode production",
     "debug": "cross-env webpack-dev-server --config debug/webpack.config.js --mode development --open --hot",
-    "test": "ava --verbose",
-    "test:e2e": "ava ./test/test.spec.js --verbose",
-    "test:coverage": "nyc npm run test"
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "ava --verbose",
+    "test:e2e": "ava ./test/test.e2e.js --verbose",
+    "test:coverage": "nyc npm run test:unit"
   },
   "ava": {
     "files": [
