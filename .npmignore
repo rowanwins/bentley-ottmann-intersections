@@ -1,3 +1,4 @@
 debug/
 test/
+.nyc_output/
 1979-Bentley.pdf
