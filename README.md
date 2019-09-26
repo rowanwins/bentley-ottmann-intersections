@@ -1,4 +1,7 @@
 # bentley-ottmann-intersections
+
+**NOTE** For a faster and smaller module I recommend checking out [sweepline-intersections](https://github.com/rowanwins/sweepline-intersections)
+
 A small module using the Bentley-Ottmann algorithm to detection self-intersections
 
 ## Install
